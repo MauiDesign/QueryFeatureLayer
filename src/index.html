@@ -152,28 +152,28 @@
     
       // CHALLENGE: Find a feature and show pop-ups (client-side)
     
-      // view.when(function(){
-      //   view.whenLayerView(featureLayer).then(function(featureLayerView) {
-      //     view.on("pointer-move", function(event){
-      //       view.hitTest(event).then(function(response){
+      view.when(function(){
+        view.whenLayerView(featureLayer).then(function(featureLayerView) {
+          view.on("pointer-move", function(event){
+            view.hitTest(event).then(function(response){
       //         // Only return features for the feature layer
-      //         var feature = response.results.filter(function (result) {
-      //          return result.graphic.layer === featureLayer;
-      //         })[0].graphic;
-      //         if (feature) {
+              var feature = response.results.filter(function (result) {
+                return result.graphic.layer === featureLayer;
+                })[0].graphic;
+              if (feature) {
       //           // Show popup for new features only
-      //           if (!view.popup.features.length || view.popup.features.length && (view.popup.features[0].attributes.FID !== feature.attributes.FID)) {
-      //             view.popup.open({
-      //               title: feature.attributes.TRL_NAME,
-      //               content: "This a " + feature.attributes.PARK_NAME + " trail located in " + feature.attributes.CITY_JUR + ".",
-      //               location: feature.geometry
-      //             });
-      //           }
-      //         }
-      //       });
-      //     });
-      //   });        
-      // });
+                  if (!view.popup.features.length || view.popup.features.length && (view.popup.features[0].attributes.FID !== feature.attributes.FID)) {
+                    view.popup.open({
+                      title: feature.attributes.TRL_NAME,
+                      content: "This a " + feature.attributes.PARK_NAME + " trail located in " + feature.attributes.CITY_JUR + ".",
+                      location: feature.geometry
+                    });
+                  }
+                }
+              });
+            });
+          });        
+        });
 
     });
     
